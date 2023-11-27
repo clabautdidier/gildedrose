@@ -30,4 +30,8 @@ public class ItemWrapper {
     public void resetQuality() {
         item.quality = 0;
     }
+
+    public String getName() {
+        return item.name;
+    }
 }

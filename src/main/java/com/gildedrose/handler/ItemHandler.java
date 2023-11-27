@@ -9,7 +9,7 @@ import java.util.Map;
 public interface ItemHandler {
     void handle(ItemWrapper item);
 
-    Map<String, ItemHandler> handlers = new HashMap();
+    Map<String, ItemHandler> handlers = new HashMap<>();
     static ItemHandler forItem(String itemName) {
         String handlerName = getHandlerName(itemName);
 
