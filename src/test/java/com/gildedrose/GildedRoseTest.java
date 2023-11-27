@@ -11,7 +11,8 @@ class GildedRoseTest {
         Item[] items = new Item[] {
             new Item(ItemName.AGED_BRIE, 5, 40),
             new Item(ItemName.SULFURAS, 5, 80),
-            new Item(ItemName.BACKSTAGE_PASSES, 5, 20)
+            new Item(ItemName.BACKSTAGE_PASSES, 5, 20),
+            new Item(ItemName.CONJURED, 5, 20)
         };
 
         GildedRose app = new GildedRose(items);
@@ -20,6 +21,7 @@ class GildedRoseTest {
         assertEquals(4, items[0].sellIn);
         assertEquals(5, items[1].sellIn);
         assertEquals(4, items[2].sellIn);
+        assertEquals(4, items[3].sellIn);
     }
 
     @Test
@@ -148,6 +150,31 @@ class GildedRoseTest {
         app.updateQuality();
 
         assertEquals(18, items[0].quality);
+    }
+
+
+    @Test
+    void updateQuality_ConjuredProduct_QualityDegradesUntilZero() {
+        Item[] items = new Item[] {
+            new Item(ItemName.CONJURED, 5, 30)
+        };
+
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+
+        assertEquals(28, items[0].quality);
+    }
+
+    @Test
+    void updateQuality_ConjuredProduct_QualityDegradesFastIfBeyondSellDate() {
+        Item[] items = new Item[] {
+            new Item(ItemName.CONJURED, -1, 28)
+        };
+
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+
+        assertEquals(24, items[0].quality);
     }
 
 }

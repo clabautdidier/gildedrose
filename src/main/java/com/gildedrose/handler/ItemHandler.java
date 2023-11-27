@@ -23,6 +23,8 @@ public interface ItemHandler {
             return ItemName.BACKSTAGE_PASSES;
         else if (ItemName.SULFURAS.equalsIgnoreCase(itemName))
             return ItemName.SULFURAS;
+        else if (ItemName.CONJURED.equalsIgnoreCase(itemName))
+            return ItemName.CONJURED;
         else
             return "DEFAULT";
     }
@@ -35,6 +37,8 @@ public interface ItemHandler {
                 handlers.put(handlerName, new BackstagePassHandler());
             else if (ItemName.SULFURAS.equalsIgnoreCase(handlerName))
                 handlers.put(handlerName, new ConstantQualityItemHandler());
+            else if (ItemName.CONJURED.equalsIgnoreCase(handlerName))
+                handlers.put(handlerName, new ConjuredItemHandler());
             else
                 handlers.put(handlerName, new DefaultItemHandler());
         }

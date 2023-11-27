@@ -20,7 +20,11 @@ public class ItemWrapper {
     }
 
     public void decreaseQuality() {
-        if (item.quality > 0) item.quality--;
+        decreaseQuality(1);
+    }
+
+    public void decreaseQuality(int delta) {
+        item.quality = Math.max(0, item.quality - delta);
     }
 
     public void decreaseSellIn() {

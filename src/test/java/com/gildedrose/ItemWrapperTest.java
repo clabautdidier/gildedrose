@@ -47,6 +47,22 @@ class ItemWrapperTest {
     }
 
     @Test
+    void decreaseQualityWithDelta_qualityAbove0_decreasesQualityByDelta() {
+        ItemWrapper itemWrapper = new ItemWrapper(new Item("itemName", 5, 5));
+        itemWrapper.decreaseQuality(2);
+        assertEquals(3, itemWrapper.getQuality());
+    }
+
+    @Test
+    void decreaseQualityWithDelta_qualityAbove0_decreasesQualityByDeltaUntilZeroReached() {
+        ItemWrapper itemWrapper = new ItemWrapper(new Item("itemName", 5, 3));
+        itemWrapper.decreaseQuality(4);
+        assertEquals(0, itemWrapper.getQuality());
+        itemWrapper.decreaseQuality(1);
+        assertEquals(0, itemWrapper.getQuality());
+    }
+
+    @Test
     void decreaseSellIn_sellInDecreases() {
         ItemWrapper itemWrapper = new ItemWrapper(new Item("itemName", 5, 0));
         itemWrapper.decreaseSellIn();

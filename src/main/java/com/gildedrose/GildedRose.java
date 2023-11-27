@@ -5,8 +5,8 @@ import com.gildedrose.handler.*;
 import java.util.Arrays;
 import java.util.List;
 
-class GildedRose {
-    List<ItemWrapper> items;
+public class GildedRose {
+    private final List<ItemWrapper> items;
 
     public GildedRose(Item[] items) {
         this.items = Arrays.stream(items)
