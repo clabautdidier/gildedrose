@@ -26,4 +26,8 @@ public class ItemWrapper {
     public void decreaseSellIn() {
         item.sellIn--;
     }
+
+    public void resetQuality() {
+        item.quality = 0;
+    }
 }

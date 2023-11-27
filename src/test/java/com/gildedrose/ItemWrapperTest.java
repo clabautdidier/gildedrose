@@ -52,4 +52,11 @@ class ItemWrapperTest {
         itemWrapper.decreaseSellIn();
         assertEquals(4, itemWrapper.getSellIn());
     }
+
+    @Test
+    void resetQuality() {
+        ItemWrapper itemWrapper = new ItemWrapper(new Item("itemName", 5, 40));
+        itemWrapper.resetQuality();
+        assertEquals(0, itemWrapper.getQuality());
+    }
 }
